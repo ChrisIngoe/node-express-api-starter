@@ -1,0 +1,27 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NodeJs Express API Starter",
+    "description": "Documentation for the starter project",
+    "version": "0.0.1"
+  },
+  "basePath": "/",
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "getMessage",
+        "summary": "Get basic message",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "examples": {
+              "application/json": "{ \"message\": \"ok\"}"
+            }
+          }
+        }
+      }
+    }
+  },
+  "consumes": ["application/json"]
+}
