@@ -1,5 +1,8 @@
 {
   "env": {
     "NODE_ENV": "dev"
-  }
+  },
+  "watch": ["src"],
+  "ext": "js,json",
+  "ignore": []
 }
