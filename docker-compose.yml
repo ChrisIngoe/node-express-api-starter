@@ -1,0 +1,22 @@
+version: '1.0'
+
+services:
+  nginx:
+    build: ./nginx
+    container_name: ms_nginx
+    links:
+      - apis
+    ports:
+      - '80:80'
+
+  apis:
+    build: .
+    container_name: apis
+    environment:
+      - loglevel=none
+    volumes:
+      - './apis:/src'
+    working_dir: '/src'
+    ports:
+      - '3001:3001'
+    command: npm run start

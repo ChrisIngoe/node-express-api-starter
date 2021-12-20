@@ -1,0 +1,22 @@
+.git
+.gitignore
+README.md
+docker-compose.yml
+node_modules
+.vscode
+nodemon.json
+
+# code formatter
+.eslintrc
+.eslintrc.json
+.eslintignore
+.editorconfig
+.huskyrc
+.lintstagedrc.json
+.prettierrc
+.prettierrc.json
+.prettierignore
+
+# docker
+Dockerfile
+docker-compose.yml
