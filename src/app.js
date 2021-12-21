@@ -5,6 +5,9 @@ const cors = require('cors'),
   express = require('express'),
   swaggerDocument = require('../swagger.json'),
   swaggerUi = require('swagger-ui-express'),
+  healthcheck = require('./routes/healthcheck'),
+  notFound = require('./routes/notFound'),
+  apis = require('./routes/apis'),
   winston = require('winston');
 
 const logger = winston.createLogger({
@@ -29,14 +32,14 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => {
-  return res.json({ message: 'Ok' });
-});
+app.get('/healthcheck', healthcheck.index);
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.get('/', apis.index);
+app.use(notFound.index);
 
 app.set('port', process.env.PORT || config.get('port'));
-
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 const server = app.listen(app.get('port'), function () {
   logger.info('Express server listening on port ' + server.address().port);
 });
+
+module.exports = server;
