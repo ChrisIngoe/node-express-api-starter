@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "nodemon ./src/app.js",
     "lint": "eslint . --fix",
-    "prettier-fix": "prettier --config .prettierrc.json --write .",
-    "prettier-check": "prettier --config .prettierrc.json --check .",
+    "prettier-fix": "prettier --config .prettierrc.json --write src test",
+    "prettier-check": "prettier --config .prettierrc.json --check src test",
     "start": "node ./src/app.js",
     "test": "nyc  --reporter=html --reporter=text mocha test --recursive --timeout 10000 --exit",
     "test-enforce": "nyc  --reporter=html --reporter=text --check-coverage --statements 80 --functions 80 --lines 80 mocha test --recursive --timeout 10000 --exit"
