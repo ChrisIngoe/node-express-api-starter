@@ -3,6 +3,7 @@ process.env['NODE_CONFIG_DIR'] = __dirname + '/config';
 const cors = require('cors'),
   config = require('config'),
   express = require('express'),
+  helmet = require('helmet'),
   swaggerDocument = require('../swagger.json'),
   swaggerUi = require('swagger-ui-express'),
   healthcheck = require('./routes/healthcheck'),
@@ -19,17 +20,16 @@ const logger = winston.createLogger({
   ],
 });
 
-if (process.env.NODE_ENV !== 'production') {
-  logger.add(
-    new winston.transports.Console({
-      format: winston.format.simple(),
-    }),
-  );
-}
+logger.add(
+  new winston.transports.Console({
+    format: winston.format.simple(),
+  }),
+);
 
 const app = express();
 
 app.use(express.json());
+app.use(helmet());
 app.use(cors());
 
 app.get('/healthcheck', healthcheck.index);
