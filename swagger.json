@@ -7,16 +7,31 @@
   },
   "basePath": "/",
   "paths": {
-    "/": {
+    "/v1/ok": {
       "get": {
-        "operationId": "getMessage",
-        "summary": "Get basic message",
+        "operationId": "getOk",
+        "summary": "Get basic OK status",
         "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "200 response",
             "examples": {
-              "application/json": "{ \"message\": \"ok\"}"
+              "application/json": "{ \"message\": \"Ok\"}"
+            }
+          }
+        }
+      }
+    },
+    "/v1/ready": {
+      "get": {
+        "operationId": "getReady",
+        "summary": "Get basic ready message",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "examples": {
+              "application/json": "{ \"message\": \"Ready\"}"
             }
           }
         }
