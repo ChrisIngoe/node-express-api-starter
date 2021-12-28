@@ -1,22 +1,7 @@
 const app = require('./app'),
-  winston = require('winston');
+  logger = require('./utils/logger');
 
 let server;
-
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.json(),
-  defaultMeta: { service: 'server-side-events' },
-  transports: [
-    //new winston.transports.File({ filename: 'error.log', level: 'error' })
-  ],
-});
-
-logger.add(
-  new winston.transports.Console({
-    format: winston.format.simple(),
-  }),
-);
 
 server = app.listen(app.get('port'), function () {
   logger.info('Express server listening on port ' + server.address().port);

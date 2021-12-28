@@ -3,23 +3,7 @@ const cors = require('cors'),
   express = require('express'),
   helmet = require('helmet'),
   routes = require('./routes/routes'),
-  winston = require('winston'),
   xss = require('xss-clean');
-
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.json(),
-  defaultMeta: { service: 'server-side-events' },
-  transports: [
-    //new winston.transports.File({ filename: 'error.log', level: 'error' })
-  ],
-});
-
-logger.add(
-  new winston.transports.Console({
-    format: winston.format.simple(),
-  }),
-);
 
 const app = express();
 
