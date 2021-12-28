@@ -39,4 +39,22 @@ describe('API endpoint Integration Tests', function () {
         });
     });
   });
+  describe('#POST /v1/status', function () {
+    it('should get Ok response and a status received message', function (done) {
+      request(app)
+        .post('/v1/status')
+        .send({ status: 'new status' })
+        .expect(200)
+        .end(function (err, res) {
+          if (err) {
+            done(err);
+          }
+          expect(res.statusCode).to.equal(200);
+          expect(res.body).to.be.an('object');
+          expect(res.body.message).to.exist;
+          expect(res.body.message).to.equal('New status received');
+          done();
+        });
+    });
+  });
 });

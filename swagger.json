@@ -36,6 +36,46 @@
           }
         }
       }
+    },
+    "/v1/status": {
+      "post": {
+        "operationId": "postStatus",
+        "summary": "Post a new status",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "New status object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewStatus"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "examples": {
+              "application/json": "{ \"message\": \"New status received\"}"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "NewStatus": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "example": "test"
+        }
+      }
     }
   },
   "consumes": ["application/json"]
