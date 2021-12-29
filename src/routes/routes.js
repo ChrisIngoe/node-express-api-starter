@@ -1,7 +1,8 @@
 'use strict';
 
 const express = require('express'),
-  apisV1 = require('./v1/status'),
+  v1Status = require('./v1/status'),
+  v1Time = require('./v1/time'),
   healthcheck = require('./healthcheck'),
   notFound = require('./notFound'),
   swaggerDocument = require('../../swagger.json'),
@@ -13,9 +14,10 @@ const router = express.Router();
 router.get('/healthcheck', healthcheck.index);
 router.use('/docs', swaggerUi.serve);
 router.get('/docs', swaggerUi.setup(swaggerDocument, { explorer: true }));
-router.get('/v1/ok', apisV1.getOk);
-router.get('/v1/ready', apisV1.getReady);
-router.post('/v1/status', validate.newStatus, apisV1.postStatus);
+router.get('/v1/status/ok', v1Status.getOk);
+router.get('/v1/status/ready', v1Status.getReady);
+router.post('/v1/status', validate.newStatus, v1Status.postStatus);
+router.get('/v1/time', v1Time.getTime);
 router.use(notFound.index);
 
 module.exports = router;

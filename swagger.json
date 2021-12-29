@@ -6,9 +6,20 @@
     "version": "0.0.1"
   },
   "basePath": "/",
+  "tags": [
+    {
+      "name": "Status",
+      "description": "Status endpoints"
+    },
+    {
+      "name": "Time",
+      "description": "Endpoints for dealing with time based requests"
+    }
+  ],
   "paths": {
-    "/v1/ok": {
+    "/v1/status/ok": {
       "get": {
+        "tags": ["Status"],
         "operationId": "getOk",
         "summary": "Get basic OK status",
         "produces": ["application/json"],
@@ -22,8 +33,9 @@
         }
       }
     },
-    "/v1/ready": {
+    "/v1/status/ready": {
       "get": {
+        "tags": ["Status"],
         "operationId": "getReady",
         "summary": "Get basic ready message",
         "produces": ["application/json"],
@@ -39,6 +51,7 @@
     },
     "/v1/status": {
       "post": {
+        "tags": ["Status"],
         "operationId": "postStatus",
         "summary": "Post a new status",
         "produces": ["application/json"],
@@ -65,6 +78,22 @@
           }
         }
       }
+    },
+    "/v1/time": {
+      "get": {
+        "tags": ["Time"],
+        "operationId": "getTime",
+        "summary": "Get UTC time from remote API",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Time"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -74,6 +103,23 @@
         "status": {
           "type": "string",
           "example": "test"
+        }
+      }
+    },
+    "Time": {
+      "type": "object",
+      "properties": {
+        "currentDateTime": {
+          "type": "datetime",
+          "example": "2021-12-29T17:30Z"
+        },
+        "dayOfTheWeek": {
+          "type": "string",
+          "example": "Wednesday"
+        },
+        "timeZoneName": {
+          "type": "string",
+          "example": "UTC"
         }
       }
     }

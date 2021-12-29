@@ -4,11 +4,11 @@ const app = require('../src/app'),
   request = require('supertest'),
   expect = require('chai').expect;
 
-describe('API endpoint Integration Tests', function () {
-  describe('#GET /v1/ok', function () {
+describe('Status API endpoint Integration Tests', function () {
+  describe('#GET /v1/status/ok', function () {
     it('should get Ok response and an ok message', function (done) {
       request(app)
-        .get('/v1/ok')
+        .get('/v1/status/ok')
         .expect(200)
         .end(function (err, res) {
           if (err) {
@@ -22,10 +22,10 @@ describe('API endpoint Integration Tests', function () {
         });
     });
   });
-  describe('#GET /v1/ready', function () {
+  describe('#GET /v1/status/ready', function () {
     it('should get Ok response and an ok message', function (done) {
       request(app)
-        .get('/v1/ready')
+        .get('/v1/status/ready')
         .expect(200)
         .end(function (err, res) {
           if (err) {

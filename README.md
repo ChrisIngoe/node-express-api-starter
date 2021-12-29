@@ -36,6 +36,6 @@ or
 ### Kill open connections if the port has been left running by a previous instance
 
 ```
-lsof -i:3000
+lsof -i:3001
 kill -9 [PID]
 ```

@@ -6,5 +6,8 @@
   "logging": {
     "level": "debug",
     "fileName": "server.log"
+  },
+  "time": {
+    "url": "http://worldclockapi.com/api/json/utc/now"
   }
 }
