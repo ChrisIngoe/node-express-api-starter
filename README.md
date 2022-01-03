@@ -39,3 +39,15 @@ or
 lsof -i:3001
 kill -9 [PID]
 ```
+
+## Docker Commands
+
+docker build -t <username>/<image-name> .
+docker run -it -d -p80:3001 <username>/<image-name>
+docker tag <username>/<image-name> <username>/<image-name>:v1
+docker push <username>/<image-name>:v1
+docker ps
+docker inspect <container-id>
+docker logs <container-id>
+docker stop <container-id>
+docker-compose up --build

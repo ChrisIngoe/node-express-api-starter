@@ -1,22 +1,26 @@
-version: '1.0'
+version: '2'
 
 services:
-  nginx:
-    build: ./nginx
-    container_name: ms_nginx
-    links:
-      - apis
-    ports:
-      - '80:80'
-
-  apis:
+  microgateway:
     build: .
-    container_name: apis
     environment:
-      - loglevel=none
-    volumes:
-      - './apis:/src'
-    working_dir: '/src'
-    ports:
-      - '3001:3001'
+      - PORT=3001
+    container_name: microgateway
     command: npm run start
+    networks:
+      - microgateway
+
+  nginx:
+    build: nginx
+    environment:
+      - GATEWAY_DNS=microgateway:3001
+    ports:
+      - '443:443'
+    container_name: nginx
+    depends_on:
+      - microgateway
+    networks:
+      - microgateway
+
+networks:
+  microgateway:

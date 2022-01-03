@@ -5,13 +5,14 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 COPY package.json /usr/src/app/package.json
+
+# Production build stage
+ENV NODE_ENV production
+
 RUN npm install
 
 COPY . /usr/src/app
 
 EXPOSE 3001
-
-# Production build stage
-ENV NODE_ENV production
 
 CMD ["npm", "run", "start"]
